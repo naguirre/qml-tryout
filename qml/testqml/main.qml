@@ -41,7 +41,7 @@ Rectangle {
         transform: Translate {
             id: game_translate_
             x: 0
-            Behavior on x { NumberAnimation { duration: 400; easing.type: Easing.OutQuad } }
+            Behavior on x { NumberAnimation { easing.amplitude: 0.7; easing.period: 1000; duration: 1000; easing.type: Easing.OutQuint } }
         }
 
         /* this is the menu shadow */
