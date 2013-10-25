@@ -79,6 +79,8 @@ Item {
             text: "Search..."
             color: "gray"
             font.italic: true
+            opacity: textInput.text === ""
+            Behavior on opacity { PropertyAnimation {} }
         }
 
         MouseArea {
@@ -102,23 +104,6 @@ Item {
             height: 16
             width: 16
         }
-
-        states: State {
-            name: "hasText"; when: textInput.text != ''
-            PropertyChanges { target: typeSomething; opacity: 0 }
-            PropertyChanges { target: clear; opacity: 1 }
-        }
-
-        transitions: [
-            Transition {
-                from: ""; to: "hasText"
-                NumberAnimation { exclude: typeSomething; properties: "opacity" }
-            },
-            Transition {
-                from: "hasText"; to: ""
-                NumberAnimation { properties: "opacity" }
-            }
-        ]
     }
 
 
