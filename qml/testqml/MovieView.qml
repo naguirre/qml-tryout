@@ -3,10 +3,7 @@ import QtGraphicalEffects 1.0
 
 Item {
     id: movie_view
-
-    width: 480
-    height: 800
-
+    anchors.fill: parent
     Image {
         id: bg
         anchors.fill: parent
@@ -44,7 +41,7 @@ Item {
 
     Rectangle {
         id: topbar
-        height: 48
+        height: 64
         color: "#000000"
         anchors.right: parent.right
         anchors.left: parent.left
@@ -54,7 +51,7 @@ Item {
 
     FocusScope {
         id: focusScope
-        width: 250; height: 32
+        width: 250; height: 48
         opacity: 0.50
         anchors { right: topbar.right; rightMargin: 8; verticalCenter: topbar.verticalCenter }
 
@@ -158,7 +155,7 @@ Item {
     }
     Rectangle {
         id: bottomBar
-        height: 64
+        height: 128
         color: "#000000"
         anchors.right: parent.right
         anchors.left: parent.left

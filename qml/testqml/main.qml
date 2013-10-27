@@ -4,9 +4,6 @@ import QtGraphicalEffects 1.0
 
 Rectangle {
     id: root
-
-    width: 480
-    height: 800
     color: "black"
 
     property bool menu_shown: false
@@ -58,13 +55,13 @@ Rectangle {
         }
 
         MovieView{
-
+            anchors.fill: parent
         }
 
         Image {
             id: menu_button
-            width: 32;
-            height: 32;
+            width: 64;
+            height: 64;
             scale: ma_.pressed ? 1.2 : 1
             source: "menu.png"
             MouseArea { id: ma_; anchors.fill: parent; onClicked: root.onMenu(); }
