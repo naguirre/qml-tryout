@@ -4,14 +4,26 @@ import QtGraphicalEffects 1.0
 Item {
     id: movie_view
     anchors.fill: parent
-    Image {
-        id: bg
-        anchors.fill: parent
-        fillMode: Image.PreserveAspectCrop
-        smooth: true
-        source: "bg2.jpg"
-    }
 
+    ListView {
+           id: slidelist
+
+           anchors.fill: parent
+
+           orientation: ListView.Horizontal
+           clip: true
+           snapMode: ListView.SnapOneItem
+           boundsBehavior: Flickable.DragAndOvershootBounds
+           highlightRangeMode: ListView.StrictlyEnforceRange
+           model: CoverModel {}
+           delegate: Image {
+               source: url
+               width: slidelist.width
+               height: slidelist.height
+               fillMode: Image.PreserveAspectCrop
+               smooth: true
+           }
+       }
     //top bar blur
     Item {
         clip: true
@@ -20,7 +32,7 @@ Item {
         FastBlur {
             anchors { top: parent.top; left: parent.left; right: parent.right }
             height: movie_view.height
-            source: bg
+            source: slidelist
             radius: 64
             //transparentBorder: true
         }
@@ -114,7 +126,7 @@ Item {
 
             anchors { bottom: parent.bottom; left: parent.left; right: parent.right }
             height: movie_view.height
-            source: bg
+            source: slidelist
             radius: 64
             //transparentBorder: true
         }
