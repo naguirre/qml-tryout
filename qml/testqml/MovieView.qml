@@ -6,24 +6,26 @@ Item {
     anchors.fill: parent
 
     ListView {
-           id: slidelist
+        id: slidelist
 
-           anchors.fill: parent
+        anchors.fill: parent
 
-           orientation: ListView.Horizontal
-           clip: true
-           snapMode: ListView.SnapOneItem
-           boundsBehavior: Flickable.DragAndOvershootBounds
-           highlightRangeMode: ListView.StrictlyEnforceRange
-           model: CoverModel {}
-           delegate: Image {
-               source: url
-               width: slidelist.width
-               height: slidelist.height
-               fillMode: Image.PreserveAspectCrop
-               smooth: true
-           }
-       }
+        orientation: ListView.Horizontal
+        clip: true
+        snapMode: ListView.SnapOneItem
+        boundsBehavior: Flickable.DragAndOvershootBounds
+        highlightRangeMode: ListView.StrictlyEnforceRange
+        model: CoverModel {}
+        delegate: Image {
+            source: url
+            width: slidelist.width
+            height: slidelist.height
+            fillMode: Image.PreserveAspectCrop
+            smooth: true
+        }
+
+        onCurrentIndexChanged: textTitle.text = model.get(currentIndex).title
+    }
     //top bar blur
     Item {
         clip: true
@@ -134,8 +136,8 @@ Item {
         Column {
 
             Text {
+                id: textTitle
                 color: "white"
-                text: "Iron Man 3"
                 font.bold: true
                 font.pointSize: 15
             }
