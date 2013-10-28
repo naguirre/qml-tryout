@@ -1,9 +1,10 @@
 import QtQuick 2.1
 import QtGraphicalEffects 1.0
 
-Item {
+Rectangle {
     id: movie_view
     anchors.fill: parent
+    color: "black"
 
     ListView {
         id: slidelist
@@ -17,14 +18,16 @@ Item {
         highlightRangeMode: ListView.StrictlyEnforceRange
         model: CoverModel {}
         delegate: listItemDelegate
-
-        onCurrentIndexChanged: textTitle.text = model.get(currentIndex).title
     }
 
     Component {
         id: listItemDelegate
         Item {
+            width: movie_view.width
+            height: movie_view.height
+
             Image {
+                id: cover
                 source: url
                 width: slidelist.width
                 height: slidelist.height
@@ -40,7 +43,7 @@ Item {
                 FastBlur {
                     anchors { top: parent.top; left: parent.left; right: parent.right }
                     height: movie_view.height
-                    source: slidelist
+                    source: cover
                     radius: 64
                     //transparentBorder: true
                 }
@@ -134,7 +137,7 @@ Item {
 
                     anchors { bottom: parent.bottom; left: parent.left; right: parent.right }
                     height: movie_view.height
-                    source: slidelist
+                    source: cover
                     radius: 64
                     //transparentBorder: true
                 }
@@ -146,6 +149,7 @@ Item {
                         color: "white"
                         font.bold: true
                         font.pointSize: 15
+                        text: title
                     }
                     Text {
                         color: "#ffea00"
